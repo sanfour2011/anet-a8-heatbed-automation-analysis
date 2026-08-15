@@ -28,7 +28,7 @@ try:
    
     yTargets = yCoordList
 
-    with open(f".\\reuslts\\{date_time}.txt",'w') as fout:        
+    with open(f".\\results\\{date_time}.txt",'w') as fout:        
         fout.write('#'*15+date_time+'#'*15+"\n")
         fout.write("step size(xStep:{},yStep:{}) xlim:({},{}), ylim:({},{})\n".format(xStep,yStep,xLim_min,xLim_max,yLim_min,yLim_max))
         for x in xCoordList:

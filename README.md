@@ -49,7 +49,7 @@ Mid-adjustment (front-left / rear-right bed screws):
 ![After adjusting left corner](results/screenshots/InitialVlauesafter%20adjusting_leftTopCorner_2.png)
 ![After adjusting right corner](results/screenshots/InitialVlauesafter%20adjusting_RigthTopCorner.png)
 
-Final result (~0.1–0.2 mm variance across bed):
+Most measured points show a relative height deviation of approximately 0.1–0.2 mm from the first sampled point, with some outliers
 
 ![Final result](results/screenshots/2021.07.28%20-%2018.50.35.png)
 
