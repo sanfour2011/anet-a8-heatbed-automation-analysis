@@ -18,7 +18,7 @@ flowchart TD
     Heatmap[Heatmap-Plot]
 
     %% Verbindungen
-    Gauge -->|Movement-Protokoll / ADC| Arduino
+    Gauge -->|Clock/Data-Protokoll / ADC| Arduino
     PC <-->|Serial: m/g-commands| Arduino
     PC -->|G-Code: X/Y-Raster| Printer
     PC -->|raw-date| Data
@@ -60,6 +60,15 @@ Raw log files available in `results/data/`.
 * Anet A8 Plus (3D printer controlled over USB serial)
 * Arduino (Uno/Nano) with 20x4 I2C LCD
 * Digital dial indicator with data port
+
+### Gauge Interface
+
+![Dial indicator and cable](docs/gauge_and_connector.png)
+
+Used is 3D-printed the connector. Thin copper wire slips right into the printed pin slots and bends over to hook up with the dial indicator's data and clock lines.
+
+![Connector, top view](docs/connector_top.png)
+![Connector, wired side](docs/connector_wires_bent.png)
 
 ## Configuration / Known Issues
 
