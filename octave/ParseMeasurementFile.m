@@ -1,13 +1,13 @@
 function [x,y,z,xStep,yStep,xLim,yLim,zLim,DateTime] = ParseMeasurementFile (fileName)
   fid = fopen('test.txt');
   zLim =-1;
-  %% read date and Time
+  %read date and Time
   line_1_DateTime = fgetl(fid);
   pat_1 = '[#]+';
   [s, e, te, m, t, nm, sp] = regexp (line_1_DateTime, pat_1);
   DateTime = sp{2};
   
-  %% read limits from secound line
+  %read limits from secound line
   line_2_ConFig = fgetl(fid);
   str_2 = 'step size(xStep:30,yStep:26) xlim:(10,275), ylim:(13,200)';
   pat_2 = '\d+';
