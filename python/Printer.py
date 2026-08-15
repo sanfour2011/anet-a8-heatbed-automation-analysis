@@ -1,5 +1,6 @@
 import serial
 import time
+
 class anetA8Plus:
     
     def __init__(self, comPort):
@@ -68,7 +69,8 @@ class anetA8Plus:
         resp = self.Write2Printer(cmd)  
         if resp != 'ok':
             raise NameError("error MoveY cmd: ",cmd)       
-        return True   
+        return True  
+     
     def ReturnHome(self,x=False,y=False,z=False):
         cmd = "G28"
         if x :
@@ -82,6 +84,7 @@ class anetA8Plus:
         if self.WaitForMotionDone() != True:
             raise RuntimeError()('error ReturnHome cmd:{}'.format(cmd))
         return True
+    
     def GetCurrentPosition(self):
             #M114
             #X:0.00 Y:127.00 Z:145.00 E:0.00 Count X:0 Y:10160 Z:116000 <--- ?? stimmt das ??
@@ -95,6 +98,7 @@ class anetA8Plus:
     def PrintCurrent(self):
         pass   
         #M909 - DAC Print Values
+
     def GetFirmwareInfo(self):
         #M115 - Firmware Info
         return self.Write2Printer("M115")
@@ -108,42 +112,11 @@ class anetA8Plus:
     
     def TestMethod(self):
         print("hello from PrinterClass")
+
     def TestMethod_2(self):
         self.TestMethod()
 
     def Close(self):
         self.serialPort.close()
     
-    # def MeasureBeadLvL(self,stepSize):
-    #     yCoordList = range(self.yLim_min,self.yLim_max,stepSize)
-    #     xCoordList = range(self.xLim_min,self.xLim_max,stepSize)
-
-    #     self.ReturnHome(True, True, True)
-    #     nextMoveUp = True
-    #     yTargets = yCoordList
-
-    #     for x in xCoordList:
-    #         MoveX(x)
-    #         if nextMoveUp == True:
-    #             yTargets = yCoordList
-    #         else:
-    #             yTargets = reversed(yCoordList)
-        
-    #         for y in yTargets:
-    #             MoveY(y)
-    #             print("Move Forward y:{0}".format(y))
-    #             # put measure function here
-
-    #         nextMoveUp = ~nextMoveUp
     
-    #         print('#'*30)
-            
-            
-    #     self.ReturnHome(True, True, True)
-
-
-
-
-    
-   
-        

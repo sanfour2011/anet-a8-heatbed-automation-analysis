@@ -23,25 +23,6 @@ class Gauge:
         resp = self.serialPort.read_until('\n').rstrip()
         return resp
 
-    def Measure_OLD(self):
-        if self.Write2Gauge('m') != b'OK':
-            print('error meas!')
-            raise RuntimeError()("Error Write2Gauge : meas")
-        resp = self.Write2Gauge('g')
-        if resp == b'':
-            self.Reconnect()
-            if self.Write2Gauge('m') != b'OK':
-                 if resp == b'':
-                    self.Reconnect()
-                    if self.Write2Gauge('m') != b'OK':
-                        raise RuntimeError()("Error Write2Gauge : meas")
-
-            resp = self.Write2Gauge('g')
-        if resp != b'':
-            resp = resp.decode('ascii')
-            return float(resp)
-        raise RuntimeError()("Error reading gauge")
-
     def Measure(self):
         resp = ""
         while True:
@@ -53,27 +34,6 @@ class Gauge:
             
             self.Reconnect()
                 
-                
-
-            # if self.Write2Gauge('m') != b'OK':
-            #     print ('error meas!')
-            #     raise RuntimeError()("Error Write2Gauge : meas")        
-            # resp = self.Write2Gauge('g')
-            # if resp == b'':
-            #     self.Reconnect()
-            #     self.Measure()
-            # # return resp          
-            # resp = resp.decode('ascii')           
-            # try:
-            #     value = float(resp)
-            #     if value < 1 or value > -1:                    
-            #         return float(resp)
-            #     else:
-            #         return self.Measure()
-            # except (ValueError):     
-            #     return self.Measure()
-            # raise RuntimeError("Error reading gauge")
-
     def IsValidMeasurement(self,measValue):
         if measValue == b'' or len(measValue) <=0:
             return False
